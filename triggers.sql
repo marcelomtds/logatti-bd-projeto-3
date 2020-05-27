@@ -18,6 +18,7 @@ BEGIN
  
     UPDATE locacao SET valor = @diaria * @valor_diaria WHERE id = @id
 END
+GO
 
 -- Trigger reponsável por inserir a pontuação do cliente
 CREATE TRIGGER tgr_inserir_pontuacao_cliente
@@ -37,6 +38,7 @@ BEGIN
  
     UPDATE cliente SET pontuacao = (@diaria * 100) + pontuacao WHERE id = @id_cliente
 END
+GO
 
 -- Trigger reponsável por remover a pontuação do cliente
 CREATE TRIGGER tgr_remover_pontuacao_cliente
@@ -56,6 +58,7 @@ BEGIN
  
     UPDATE cliente SET pontuacao = pontuacao - (@diaria * 100) WHERE id = @id_cliente
 END
+GO
 
 -- Trigger reponsável por alterar a pontuação do cliente
 CREATE TRIGGER tgr_alterar_pontuacao_cliente
@@ -81,3 +84,4 @@ BEGIN
  
     UPDATE cliente SET pontuacao = (@diaria_depois * 100) - (@diaria_antes * 100) + pontuacao  WHERE id = @id_cliente
 END
+GO

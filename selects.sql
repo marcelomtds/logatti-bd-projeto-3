@@ -11,8 +11,8 @@ FROM locacao AS l
 	INNER JOIN automovel AS a ON a.id = l.id_automovel
 	INNER JOIN modelo AS mo ON mo.id = a.id_modelo
 	INNER JOIN marca AS ma ON ma.id = mo.id_marca
-WHERE l.data_locacao BETWEEN '2020-01-05' AND '2020-31-05'
-ORDER BY l.data_locacao ASC
+WHERE l.data_locacao BETWEEN '2020-05-01' AND '2020-05-31'
+ORDER BY l.data_locacao ASC;
 
 -- 2 Exibir a quantidade de diárias da última locação de um determinado cliente dado seu CPF ou CNPJ
 SELECT
@@ -23,7 +23,7 @@ SELECT
 FROM locacao AS l
 	INNER JOIN cliente AS c ON c.id = l.id_cliente
 WHERE c.cpf_cnpj = '77344660000114'
-ORDER BY l.data_locacao DESC
+ORDER BY l.data_locacao DESC;
 
 -- 3.1 Exibir o valor total das locações agrupado por cliente
 SELECT
@@ -32,7 +32,7 @@ SELECT
 FROM locacao AS l
     INNER JOIN cliente AS c ON c.id = l.id_cliente
 GROUP BY c.nome
-ORDER BY c.nome ASC
+ORDER BY c.nome ASC;
 
 -- 3.2 Exibir o automóvel mais locado
 SELECT
@@ -45,7 +45,7 @@ FROM automovel AS a
 	INNER JOIN modelo AS mo ON mo.id = a.id_modelo
 	INNER JOIN marca AS ma ON ma.id = mo.id_marca
 GROUP BY ma.descricao, mo.descricao, a.ano, a.tipo_combustivel, a.numero_portas,a.placa
-ORDER BY Quantidade DESC
+ORDER BY Quantidade DESC;
 
 -- 3.3 Exibir todos clientes que alocaram um determinado automóvel dado sua placa
 SELECT
@@ -55,4 +55,4 @@ FROM automovel AS a
 	INNER JOIN cliente AS c ON c.id = l.id_cliente
 WHERE a.placa = 'OTD8563'
 GROUP BY c.nome
-ORDER BY c.nome ASC
+ORDER BY c.nome ASC;
